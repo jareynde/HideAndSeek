@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+​
+<html>
+  <head>
+    <meta name="author" content="Mina Habibi (based in Braem Lab)">
+    <title> What An Insect Prefer?</title>
+    <script src="help_functions/sprintf.js"></script> <!-- help function, format variables in a string -->
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-image-keyboard-response.js"></script> <!-- for image-->
+    <script src="jspsych/plugin-preload.js"></script> <!-- for preloading -->
+    <script src="jspsych/plugin-categorize-html.js"></script>
+    <script src="jspsych/plugin-instructions.js"></script>
+    <script src="jspsych/plugin-categorize-image.js"></script>
+    <script src="jspsych/plugin-fullscreen.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src="jspsych/plugin-external-html.js"></script>
+    <script src="jspsych/plugin-survey-likert.js"></script>
+    <script src="jspsych/plugin-survey-multi-choice.js"></script>
+    <script src="jspsych/plugin-survey-text.js"></script>
+    <script src="jspsych/plugin-call-function.js"></script>
+    <script src="jspsych/plugin-browser-check.js"></script>
+    <script src="jspsych/plugin-call-function.js"></script>
+    <script src="help_functions/serverComm.js" type="text/javascript"></script> <!-- to interact with the server -->
+    <script src="js/serverComm.js" type="text/javascript"></script>
+    <link href="pilot.css" rel="stylesheet" type="text/css">
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css" /> <!-- for css visual stylesheet-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/test.js"></script>
+​
+​
+</head>
+  <body>
+  </body>
+  <script>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////* initialize jsPsych *///////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//var test=false;
+var test=true;
+​
+​
+​
+var jsPsych = initJsPsych({
+     on_finish: function() {
+       jsPsych.data.displayData();
+       saveData(jsPsych.data.get().csv());
+       jsPsych.data.get().localSave('csv','mydata.csv'); // for local computer offline
+  }
+ });
+ 
+ // HIER GESTART
+ 
+ var timeline = [];
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////* Full Screen *//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+​
+  var enter_fullscreen = {
+  type: jsPsychFullscreen,
+  fullscreen_mode: true
+}
+​
+timeline.push(enter_fullscreen);
+​
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////// Browser Check ///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// test browser: only chrome allowed (and not on mobile device)
+  var browser_test = {
+      type: jsPsychBrowserCheck,
+      inclusion_function: function (data) {
+          return data.browser == 'chrome' && data.mobile === false
+      },
+      exclusion_message: function (data) {
+          if (data.mobile) {document.querySelector('body').innerHTML = '<p style="color:black">You must use a desktop/laptop computer to participate in this experiment.</p>'}
+          else if (data.browser !== 'chrome') {document.querySelector('body').innerHTML = '<p style="color:black">You must use Chrome as your browser to complete this experiment.</p>'}
+      }
+  }
+​
+  timeline.push(browser_test)
+​
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////* Collecting Information from subject */////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+​
+var demInfo_1 = {
+  type: jsPsychSurveyMultiChoice,
+  questions: [
+    {prompt: "What is your gender?", name: 'gender', options: ["male", "female", "other", "prefer not to say"], required:true},
+    {prompt: "Are you right-handed or left-handed?", name: 'handedness', options: ['left-handed', 'right-handed'], required:true},
+    {prompt: "What is your English-speaking level?", name: 'englishlevel', options: ['native', 'fluent', 'basic'], required:true}
+  ],
+  data: {	trial_part: 'Demo_Info'},
+  on_finish: function(data) {
+    jsPsych.data.addProperties({
+      gender: data.response.gender,
+      handedness:data.response.handedness,
+      englishlevel:data.response.englishlevel,
+​
+    })
+  }
+};
+​
+timeline.push(demInfo_1);
+​
+var age_trial = {
+  type: jsPsychSurveyText,
+  questions: function(){
+    if (test==true){
+      return [
+        {prompt: "How old are you?", name:'Age', required: true, placeholder: "Age:"},
+        {prompt: 'Email', name:'Email',required: true, placeholder: "Email:"}, // May be I need to moit this
+      ];
+      }
+    else{
+      return [
+        {prompt: "How old are you?", name:'Age', required: true, placeholder: "Age:"}];
+    }
+},
+data: {trial_part:'Defining ProlificID'},
+on_finish: function(data) {
+    if(test==true){
+    jsPsych.data.addProperties({
+      Age: data.response.Age,
+      Email:data.response.Email,
+    })
+  }
+  else{
+    jsPsych.data.addProperties({
+      Age: data.response.Age,
+      //Email:data.response.Email,
+    })
+  }
+  }
+};
+timeline.push(age_trial);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////// Defining the Prolific ID ///////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////
+if (test == false){
+    var prolificID = jsPsych.data.getURLVariable('PROLIFIC_PID'); // might give warning if not in URL, then add ?prolific_pid=... after html
+    var subjectID = jsPsych.randomization.randomID(8) // create random subjectID, only used to identify separate participants in an anonymized way (~participant number)
+    jsPsych.data.addProperties({subjectID: subjectID, prolificID: prolificID, session : 'session_1',Finish_time:new Date(new Date().getTime() + 1*24*60*60*1000)}) // add to data
+}
+​
+else {
+  var add_dem_info = {
+    type: jsPsychCallFunction,
+     func: function(){
+      jsPsych.data.addProperties({
+      prolificID: jsPsych.data.getLastTrialData().trials[0].response.Email,
+      //session : 'session_1',
+      //Finish_time:new Date(new Date().getTime() + 1*24*60*60*1000),
+​
+  });
+  		return prolificID;
+    },
+​
+    data: {task_part: 'Defining ProlificID'},
+  };
+    timeline.push(add_dem_info);
+    var prolificID = jsPsych.data.get().filter({task_part: 'Defining ProlificID'}).select('prolificID');
+    jsPsych.data.addProperties({subjectID: jsPsych.randomization.randomID(8), prolificID: prolificID, session : 'session_1',Finish_time:new Date(new Date().getTime() + 1*24*60*60*1000)}) // add to data
+    };
+​
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////// Registering the subject /////////////////////////////////////////////////
+/////////////////// But here I need to check the session too only the prolific ID is not enough ////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// register subject on server
+​
+var register_subject = {
+  type: jsPsychCallFunction,
+  async: true,
+  func: function(done) {
+    serverComm.register_subject(prolificID,
+      function(){ // this is the success callback, the function executes if the subject has a unique id
+        done(console.log("participant registered!"))
+      },
+      function(){ // this is the excluded callback, used if the subject's ID is already in the database: show excluded message
+        done(document.querySelector('body').innerHTML = '<p style="color:black"> Subject Registration. Our records indicate that you have already started this experiment. Due to the nature of the experiment, restarting is not permitted.</p><p style="color:black;">If you believe this message is in error, you can contact the researchers at mina.habibi@ugent.be. Our apologies for the trouble.</p>')
+      },
+      function(){ // this is the failure callback. show technical error message.
+        done(document.querySelector('body').innerHTML = '<p style="color:black"> Subject Registration. Our apologies. There was a technical error on our end while loading the experiment.</p><p style="color:black;">You will not be able to complete the experiment. We are sorry for the trouble.</p>')
+      }
+    )
+  }
+}
+​
+//timeline.push(register_subject) // add to timeline
+​
+</script>
+​
+</html>
+
+
+// HIER GEBLEVEN
