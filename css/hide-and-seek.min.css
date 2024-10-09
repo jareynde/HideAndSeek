@@ -1,0 +1,677 @@
+/* ---------------------------------- */
+/* Hide And Seek Layout         */
+/* ---------------------------------- */
+
+.garden-wrap {
+  height: 100vh;
+  width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  size: 'contain' 
+}
+.garden-container {
+  position:fixed;
+  max-height: 100vh;
+  overflow: hidden;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.sky {
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  background: linear-gradient(to bottom, #037ccb 0%, #82ccef 100%);
+}
+.grass {
+  position: absolute;
+  top: 20%;
+  height: 80%;
+  width: 100%;
+  background: #59A608;
+}
+
+.cloud {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  fill: #e9f4f2;
+  overflow: visible;
+}
+.cloud[pattern='1'] {
+  content: url("../img/cloud01.svg");
+  left: 10%;
+  top: 8%;
+  height: 10%;
+  width: 10%;
+}
+.cloud[pattern='2'] {
+  content: url("../img/cloud02.svg");
+  left: 85%;
+  top: 12%;
+  height: 4%;
+  width: 4%;
+
+}
+.cloud[pattern='3'] {
+  content: url("../img/cloud03.svg");
+  left: 55%;
+  top: 10%;
+  height: 7%;
+  width: 7%;
+}
+
+.grassdec {
+  position: absolute;
+  content: url("../img/grass2.png");
+  left: 67%;
+  bottom: 40%;
+  height: 40px;
+}
+
+.grassdec2 {
+  position: absolute;
+  content: url("../img/grass2.png");
+  left: 16%;
+  bottom: 40%;
+  height: 40px;
+}
+.grassdec3 {
+  position: absolute;
+  content: url("../img/grass2.png");
+  left: 23%;
+  bottom: 40%;
+  height: 40px;
+}
+/* ---------------------------------- */
+/* Hiding Spot Buttons                */
+/* ---------------------------------- */
+.tree {
+  position: absolute;
+  content: url("../img/tree2.png");
+  left: 28%;
+  bottom: 60%;
+  width: 180px;
+}
+
+.barn {
+  position: absolute;
+  content: url("../img/barn2.png");
+  left: 45%;
+  bottom: 62%;
+  width: 180px;
+}
+
+.rock {
+  position: absolute;
+  content: url("../img/boulder.png");
+  left: 61%;
+  bottom: 60%;
+  width: 180px;
+}
+
+.bush {
+  position: absolute;
+  content: url("../img/bush.png");
+  left: 38%;
+  bottom: 49%;
+  width: 140px;
+}
+
+.loft {
+  position: absolute;
+  content: url("../img/loft3.png");
+  left: 57%;
+  bottom: 49%;
+  width: 80px;
+  transform: scaleX(-1);
+}
+
+
+.tent {
+  position: absolute;
+  content: url("../img/tent2.png");
+  left: 45%;
+  bottom: 35%;
+  width: 160px;
+}
+
+
+.pine {
+  position: absolute;
+  content: url("../img/pine.png");
+  left: 61%;
+  bottom: 32%;
+  width: 160px;
+}
+
+.well {
+  position: absolute;
+  content: url("../img/well2.png");
+  left: 29%;
+  bottom: 32%;
+  width: 150px;
+}
+
+.tree:hover {
+  opacity: 0.5;
+}
+.tree[response = "disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.tent:hover {
+  opacity: 0.5;
+}
+.tent[response="disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.barn:hover {
+  opacity: 0.5;
+}
+.barn[response="disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.bush:hover {
+  opacity: 0.5;
+}
+.bush[response="disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.pine:hover {
+  opacity: 0.5;
+}
+.pine[response = "disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.rock:hover {
+  opacity: 0.5;
+}
+.rock[response = "disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.well:hover {
+  opacity: 0.5;
+}
+.well[response = "disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+.loft:hover {
+  opacity: 0.5;
+}
+.loft[response = "disabled"] {
+  cursor: not-allowed;
+  opacity:100%;
+}
+
+/* ---------------*/
+/* Feedback       */
+/* -------------- */
+
+.feedbacktimepoes {
+  position: absolute;
+  opacity: 0%;
+}
+.feedbacktimepoes[context="feedback"] {
+  opacity: 100%;
+  -webkit-animation: appear ease-in 0.0s;
+  animation: appear ease-in 0.0s;
+}
+
+.feedbacktimevos {
+  position: absolute;
+  opacity: 0%;
+}
+.feedbacktimevos[context="feedback"] {
+  opacity: 100%;
+  -webkit-animation: appear ease-in 0.0s;
+  animation: appear ease-in 0.0s;
+}
+
+.feedbacktimekonijn {
+  position: absolute;
+  opacity: 0%;
+}
+.feedbacktimekonijn[context="feedback"] {
+  opacity: 100%;
+  -webkit-animation: appear ease-in 0.0s;
+  animation: appear ease-in 0.0s;
+}
+
+
+.feedbacktimepanda {
+  position: absolute;
+  opacity: 0%;
+}
+.feedbacktimepanda[context="feedback"] {
+  opacity: 100%;
+  -webkit-animation: appear ease-in 0.0s;
+  animation: appear ease-in 0.0s;
+}
+
+
+@keyframes appear {
+  0%   { opacity: 0; }
+  99%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes appear {
+  0%   { opacity: 0; }
+  99%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.feedbacktimevos[context="feedback"][outcome='0'] {
+  content:url("../img/wrong.png");
+}
+.feedbacktimevos[context="feedback"][outcome='1'] {
+  content:url("../img/vos.png");
+}
+
+/* 
+0: tree, 
+1: tent, 
+2: barn, 
+3: bush, 
+4: pine, 
+5: rock, 
+6: well, 
+7: loft
+*/
+.feedbacktimevos[context="feedback"][outcome='0'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 130px;
+}
+
+.feedbacktimevos[context="feedback"][outcome='0'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 130px;
+}
+
+.feedbacktimevos[context="feedback"][outcome='0'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 130px;
+}
+.feedbacktimevos[context="feedback"][outcome='0'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 130px;
+}
+
+.feedbacktimevos[context="feedback"][outcome='0'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 130px;
+}
+.feedbacktimevos[context="feedback"][outcome='0'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 130px;
+}
+.feedbacktimevos[context="feedback"][outcome='0'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 130px;
+}
+
+.feedbacktimevos[context="feedback"][outcome='0'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimevos[context="feedback"][outcome='1'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 130px;
+}
+
+
+
+.feedbacktimepoes[context="feedback"][outcome='0'] {
+  content:url("../img/wrong.png");
+}
+.feedbacktimepoes[context="feedback"][outcome='1'] {
+  content:url("../img/poes.png");
+}
+
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 130px;
+}
+
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 130px;
+}
+
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 130px;
+}
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 130px;
+}
+
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 130px;
+}
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 130px;
+}
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 130px;
+}
+
+.feedbacktimepoes[context="feedback"][outcome='0'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimepoes[context="feedback"][outcome='1'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 130px;
+}
+
+
+.feedbacktimekonijn[context="feedback"][outcome='0'] {
+  content:url("../img/wrong.png");
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'] {
+  content:url("../img/konijn.png");
+}
+
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 130px;
+}
+
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 130px;
+}
+
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 130px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 130px;
+}
+
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 130px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 130px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 130px;
+}
+
+.feedbacktimekonijn[context="feedback"][outcome='0'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimekonijn[context="feedback"][outcome='1'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 130px;
+}
+
+
+
+
+
+.feedbacktimepanda[context="feedback"][outcome='0'] {
+  content:url("../img/wrong.png");
+}
+.feedbacktimepanda[context="feedback"][outcome='1'] {
+  content:url("../img/panda.png");
+}
+
+/* 
+0: tree, 
+1: tent, 
+2: barn, 
+3: bush, 
+4: pine, 
+5: rock, 
+6: well, 
+7: loft
+*/
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='0'] {
+  left: 28%;
+  bottom: 60%;
+  width: 130px;
+}
+
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='1'] {
+  left: 45%;
+  bottom: 35%;
+  width: 130px;
+}
+
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='2'] {
+  left: 45%;
+  bottom: 62%;
+  width: 130px;
+}
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='3'] {
+  left: 38%;
+  bottom: 49%;
+  width: 130px;
+}
+
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='4'] {
+  left: 61%;
+  bottom: 32%;
+  width: 130px;
+}
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='5'] {
+  left: 61%;
+  bottom: 60%;
+  width: 130px;
+}
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='6'] {
+  left: 29%;
+  bottom: 32%;
+  width: 130px;
+}
+
+.feedbacktimepanda[context="feedback"][outcome='0'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 100px;
+}
+.feedbacktimepanda[context="feedback"][outcome='1'][choice='7'] {
+  left: 57%;
+  bottom: 49%;
+  width: 130px;
+}
+
