@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hide And Seek Game</title>
+
+  <!-- Load libraries -->
+  <script src="https://unpkg.com/jspsych@7.3.3"></script>
+
+  <!-- Initialize jsPsych -->
+  <script src="./js/init-jspsych.js"></script>
+
+  <!-- Load jsPsych plug-ins -->
+  <script src="./js/plugin-hide-and-seek-trial.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial2.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial3.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial4.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial5.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial6.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial7.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial8.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial9.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial10.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial11.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial12.js"></script>
+  <script src="./js/plugin-hide-and-seek-trial-practice.js"></script>
+
+  <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.3"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
+  <script src="jspsych/plugin-fullscreen.js"></script>
+  <script src="jspsych/plugin-browser-check.js"></script>
+  <script src="jspsych/plugin-survey-multi-choice.js"></script>
+  <script src="jspsych/plugin-survey-text.js"></script>
+  <script src="jspsych/plugin-call-function.js"></script>
+  <script src="jspsych/plugin-instructions.js"></script>
+  <script src="jspsych/plugin-html-button-response.js"></script>
+  <script src="help_functions/serverComm.js" type="text/javascript"></script>
+  <script src="js/serverComm.js" type="text/javascript"></script>
+  <!-- Load experiment -->
+  <script src="./js/hide-and-seek-experiment.js"></script>
+
+
+  <!-- Load CSS styles -->
+  <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
+  <link href="./css/hide-and-seek.min.css" rel="stylesheet" type="text/css"></link>
+  <style>
+    .jspsych-instructions-nav {
+      /* Add your custom styles for the navigation buttons here */
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .jspsych-instructions-nav-btn {
+      /* Add your custom styles for each button here */
+      margin: 5px;
+    }
+  </style>
+
+</head>
+<body></body>
+<script>
+  var test=true;
+  // Define timeline.
+  var timeline = [];
+  
+  timeline.push(enter_fullscreen);
+  
+  timeline.push(consent);
+  timeline.push(browser_test)
+  timeline.push(demInfo_1);
+  timeline.push(age_trial);
+  //timeline.push(add_dem_info);
+  //timeline.push(register_subject) // add to timeline
+
+
+  
+  timeline = timeline.concat(preload);          
+  timeline = timeline.concat(instructions); 
+
+  timeline = timeline.concat(trials_practice);    
+  timeline = timeline.concat(feedback_practice); 
+
+  timeline = timeline.concat(whatsnext);
+  timeline = timeline.concat(instructions_aa);
+  timeline = timeline.concat(instructions_bb);
+
+  timeline = timeline.concat(instructions_firstgame);
+  timeline = timeline.concat(trials_firstgame);    
+  timeline = timeline.concat(feedback_firstgame); 
+
+
+  timeline = timeline.concat(instructions_secondgame);
+  timeline = timeline.concat(trials_secondgame); 
+  timeline = timeline.concat(feedback_secondgame); 
+
+  timeline = timeline.concat(instructions_thirdgame);
+  timeline = timeline.concat(trials_thirdgame); 
+  timeline = timeline.concat(feedback_thirdgame); 
+
+  timeline = timeline.concat(instructions_fourthgame);
+  timeline = timeline.concat(trials_fourthgame);  
+  timeline = timeline.concat(feedback_fourthgame); 
+
+  timeline = timeline.concat(instructions_fifthgame);
+  timeline = timeline.concat(trials_fifthgame); 
+  timeline = timeline.concat(feedback_fifthgame); 
+
+  timeline = timeline.concat(instructions_sixthgame);
+  timeline = timeline.concat(trials_sixthgame); 
+  timeline = timeline.concat(feedback_sixthgame); 
+
+  timeline = timeline.concat(instructions_seventhgame);
+  timeline = timeline.concat(trials_seventhgame);    
+  timeline = timeline.concat(feedback_seventhgame); 
+
+  timeline = timeline.concat(instructions_eigthgame);
+  timeline = timeline.concat(trials_eigthgame); 
+  timeline = timeline.concat(feedback_eigthgame); 
+
+  timeline = timeline.concat(instructions_ninthgame);
+  timeline = timeline.concat(trials_ninthgame); 
+  timeline = timeline.concat(feedback_ninthgame); 
+
+  timeline = timeline.concat(instructions_tenthgame);
+  timeline = timeline.concat(trials_tenthgame);  
+  timeline = timeline.concat(feedback_tenthgame); 
+
+  timeline = timeline.concat(instructions_eleventhgame);
+  timeline = timeline.concat(trials_eleventhgame); 
+  timeline = timeline.concat(feedback_eleventhgame); 
+
+  timeline = timeline.concat(instructions_twelfthgame);
+  timeline = timeline.concat(trials_twelfthgame); 
+  timeline = timeline.concat(feedback_twelfthgame); 
+
+  timeline.push(debrief);
+
+  timeline.push(save_data);
+  timeline.push(End_Experiment);
+  // Execute timeline.
+  jsPsych.run(timeline);
+
+</script>
+</html>
